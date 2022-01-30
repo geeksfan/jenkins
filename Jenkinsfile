@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+  agent any
   stages {
     stage('build') {
       steps {
@@ -12,16 +12,17 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh './jenkins/scripts/test.sh'
+        sh 'sh ./jenkins/scripts/test.sh'
       }
     }
+
     stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
-            }
-        }
+      steps {
+        sh 'sh ./jenkins/scripts/deliver.sh'
+        input 'Finished using the web site? (Click "Proceed" to continue)'
+        sh 'sh ./jenkins/scripts/kill.sh'
+      }
+    }
 
   }
 }
