@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+  agent any
   stages {
     stage('build') {
       steps {
@@ -16,6 +16,7 @@ pipeline {
         sh './jenkins/scripts/test.sh'
       }
     }
+
     stage('Deliver') {
             steps {
                 sh "chmod +x -R ${env.WORKSPACE}"
